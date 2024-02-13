@@ -1,0 +1,10 @@
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - "47017:27017"
+    volumes:
+      - mongo_data:/var/lib/mongodb-data:/data/db
+volumes:
+  mongo_data:
