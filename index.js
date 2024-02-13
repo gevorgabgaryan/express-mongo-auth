@@ -1,12 +1,7 @@
-import express from 'express';
-import config from './config';
+import API from "./api";
+import MongooseService from "./database/MongooseService";
 
-const app = express();
-
-app.get('/', (req, res) => {
-    res.json({message: "Hello world"})
-})
-
-app.listen(config.port, ()=>{
-   console.log(`app start on port ${config.port}`)
-})
+(async () => {
+    await MongooseService.init();
+    await API.init();
+})();
