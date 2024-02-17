@@ -62,7 +62,42 @@ class AuthService {
       }
     )
 
+    const redisClient = config.redis.client
+    await redisClient.sadd(`user:${user.id}:tokens`, token)
+
     return { userId: user.id, email: user.email, token }
+  }
+
+  static async checkToken (token, authorizationRoles) {
+    try {
+      const payload = jwt.verify(token, config.JWTSecret)
+      const { userId, role } = payload
+      const redisClient = config.redis.client
+      const exists = await redisClient.sismember(
+        `user:${userId}:tokens`,
+        token
+      )
+
+      if (exists !== 1) {
+        throw new Error('Invalid token')
+      }
+
+      if (authorizationRoles && !authorizationRoles.includes(role)) {
+        throw new Error('Access denied')
+      }
+      return { userId, role }
+    } catch (e) {
+      console.log(e)
+      throw new Error(JSON.stringify(e))
+    }
+  }
+
+  static async logout (userId, token) {
+    const redisClient = config.redis.client
+    await redisClient.srem(`user:${userId}:tokens`, token)
+    return {
+      message: 'logout succesful'
+    }
   }
 }
 

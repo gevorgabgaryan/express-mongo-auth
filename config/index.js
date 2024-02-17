@@ -15,6 +15,10 @@ const config = {
     password: process.env.MAIL_PASSWORD,
   },
   JWTSecret: 'secret',
+  redis: {
+    port: process.env.REDIS_PORT || 6379,
+    client: null
+  },
 };
 
 export default config;

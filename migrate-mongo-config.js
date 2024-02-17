@@ -1,6 +1,6 @@
 const config = {
   mongodb: {
-    url: 'mongodb+srv://gevorgabgaryan2024:eXaOnWsHrOKrcqbc@cluster0.i7idy35.mongodb.net',
+    url: 'mongodb+srv://gevorgabgaryan2024:password@cluster0.i7idy35.mongodb.net',
 
     databaseName: 'EXPRESS_APP_AUTH',
 

@@ -42,6 +42,27 @@ class AuthController {
     }
   }
 
+  static async logout (req, res) {
+    try {
+      const token = req.headers.Authorization
+        ? req.headers.Authorization
+        : req.headers.authorization
+      const result = await AuthService.logout(req.userId, token.split(' ')[1])
+      res.json({
+        status: true,
+        result
+      })
+    } catch (e) {
+      console.log(e)
+      res.json({
+        status: false,
+        error: true,
+        message: 'System error'
+      })
+    }
+  }
+
+
 }
 
 export default AuthController
