@@ -19,6 +19,17 @@ const config = {
     port: process.env.REDIS_PORT || 6379,
     client: null
   },
+  mysql: {
+    options: {
+      host: process.env.MYSQL_HOST,
+      port: process.env.MYSQL_PORT,
+      database: process.env.MYSQL_DB_NAME,
+      dialect: 'mysql',
+      username: process.env.MYSQL_USERNAME,
+      password: process.env.MYSQL_PASSWORD
+    },
+    client: null
+  },
 };
 
 export default config;

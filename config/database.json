@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "online_shop",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 5306
+  }
+}

@@ -45,7 +45,12 @@ const userSchema = Schema({
 
   age: {
     type: Number,
-  }
+  },
+
+  orders: [{
+    type: Number,
+    ref: 'Order'
+  }]
 }, {
   timestamps: {
     createdAt: 'created_at',

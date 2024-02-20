@@ -32,6 +32,10 @@ class ProductService {
     return await ProductModel.calculateTotalDiscountSum()
   }
 
+  static async getProduct (id) {
+    return await ProductModel.findOne({ _id: id })
+  }
+
 }
 
 export default ProductService

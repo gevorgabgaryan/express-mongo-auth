@@ -24,7 +24,8 @@
     "@babel/node": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "migrate-mongo": "^11.0.0",
-    "nodemon": "^3.0.3"
+    "nodemon": "^3.0.3",
+    "sequelize-cli": "^6.6.2"
   },
   "babel": {
     "presets": [
@@ -47,6 +48,8 @@
     "joi": "^17.12.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.2",
-    "nodemailer": "^6.9.9"
+    "mysql2": "^3.9.1",
+    "nodemailer": "^6.9.9",
+    "sequelize": "^6.37.1"
   }
 }
