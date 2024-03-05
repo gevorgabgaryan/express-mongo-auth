@@ -4,10 +4,14 @@ class ProductController {
   static async all (req, res) {
     const { page, itemsPerPage, keyword } = req.query
     try {
+      if (typeof keyword !== 'string') {
+            throw new Error('Invalid keyword')
+      }
+      const safeKeyword = keyword ? keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') : '';
       const result = await ProductService.getProducts(
         page,
         itemsPerPage,
-        keyword
+        safeKeyword
       )
       res.status(200).json({
         status: true,
